@@ -5,9 +5,7 @@ import requests
 from yarl import URL
 import os
 import sys
-import logging as logger
-sys.path.append("../src")
-from utils import *
+sys.path.append("src")
 from logger import logging as logger
 from exception import CustomException
 # logging.info("EXTRACTING THE DATA STARTED TO PERFORM")

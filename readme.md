@@ -16,7 +16,7 @@ The directory structure is as follows:
 
 ## Usage
 
-To execute the ETL pipeline, run the `pipeline_main.py` script. Ensure that all the necessary dependencies are installed and properly configured before running the script.
+To execute the ETL pipeline, run the `pipeline_main.py` script use `python3 feature_pipeline/pipeline_main.py` this command. Ensure that all the necessary dependencies are installed and properly configured before running the script.
 
 Modify the various files within the `etl/` directory as per your specific data extraction, transformation, and loading requirements.
 
