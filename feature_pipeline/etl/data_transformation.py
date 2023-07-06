@@ -1,7 +1,6 @@
 import pandas as pd
 import sys
 sys.path.append("src")
-from utils import *
 from logger import logging as logger
 
 class Transformation(object):

@@ -39,7 +39,6 @@ class Extract(object):
             )
         export_start = export_end_reference_datetime - datetime.timedelta(days=days_delay + days_export)
         export_end = export_end_reference_datetime - datetime.timedelta(days=days_delay)
-
         query_params = {
                 "offset": 0,
                 "sort": "HourUTC",
@@ -59,6 +58,7 @@ class Extract(object):
             raise e
         records = response["records"]
         records=pd.DataFrame(records)
+        records.to_csv("a.csv")
         actual_dt_format="%Y-%m-%dT%:%M:%S"
         metadata={
         "days_delay":days_delay,

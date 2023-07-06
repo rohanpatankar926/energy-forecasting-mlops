@@ -1,6 +1,7 @@
 import pandas as pd
-from etl import data_ingestion,data_transformation
+from etl import data_ingestion,data_transformation,data_validation
 import sys
+
 sys.path.append("src")
 from logger import logging as logger
 
@@ -15,6 +16,9 @@ def run(export_end_reference_datetime=None,days_delay=15,days_export=30,url="htt
     data,metadata=data_ingestion.Extract.from_api(export_end_reference_datetime=export_end_reference_datetime,days_delay=days_delay,days_export=days_export,url=url)
     logger.info(f"Data transformation from the extracted data started...")
     data_transformation=transform_data(data=data)
+    logger.info(f"Validating data...")
+    validation_expectation_suite=data_validation.build_great_expectation_suite()
+    print(validation_expectation_suite)
     return data_transformation
 
 

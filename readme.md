@@ -16,8 +16,8 @@ The directory structure is as follows:
       - `__init__.py`: An empty file that marks the `etl` directory as a Python package.
       <!-- - `data_load.py`: Contains functions for loading data into the pipeline. -->
       - `data_ingestion.py`: Contains functions for ingesting data from a source.
-      <!-- - `data_validation.py`: Includes functions for validating the loaded data. -->
       - `data_transformation.py`: Includes functions for transforming the ingested data.
+       - `data_validation.py`: Includes functions for validating the loaded data using expectation suite.
 - `src`:The logger and exception scripts are stored here
     - `logger.py`: For capturing datetime logs
     - `exception.py`: For capturing our custom exceptions 
