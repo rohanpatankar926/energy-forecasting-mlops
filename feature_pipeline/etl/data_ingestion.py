@@ -27,7 +27,6 @@ class Extract(object):
 
         Returns:
             A tuple of a Pandas DataFrame containing the exported data and a dictionary of metadata."""
-
         # Compute the export window.
         if export_end_reference_datetime is None:
             export_end_reference_datetime = datetime.datetime.utcnow().replace(
@@ -59,7 +58,7 @@ class Extract(object):
         records = response["records"]
         records=pd.DataFrame(records)
         records.to_csv("a.csv")
-        actual_dt_format="%Y-%m-%dT%:%M:%S"
+        actual_dt_format="%Y-%m-%dT%H:%M:%S"
         metadata={
         "days_delay":days_delay,
         "days_export":days_export,

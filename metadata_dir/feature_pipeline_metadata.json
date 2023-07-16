@@ -1,0 +1,8 @@
+{
+  "days_delay": 15,
+  "days_export": 30,
+  "export_datetime_utc_start": "2023-06-01T00:00:00",
+  "export_datetime_utc_end": "2023-07-01T00:00:00",
+  "datetime_format": "%Y-%m-%dT%H:%M:%S",
+  "feature_group_version": 1
+}

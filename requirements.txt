@@ -2,3 +2,4 @@ pandas
 numpy
 requests
 great-expectations
+hsfs

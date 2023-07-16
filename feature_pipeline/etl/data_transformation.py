@@ -19,6 +19,7 @@ class Transformation(object):
                 "HourUTC": "datetime_utc",
                 "PriceArea": "area",
                 "ConsumerType_DE35": "consumer_type",
+                "id":"ID",
                 "TotalCon": "energy_consumption",
             },
             inplace=True,

@@ -1,37 +1,51 @@
-from great_expectations.core import ExpectationSuite,ExpectationConfiguration
+from great_expectations.core import ExpectationSuite, ExpectationConfiguration
 
-def build_great_expectation_suite():
-    expectation_suite_energy_consumption=ExpectationSuite(expectation_suite_name="energy_consumption_suite")
 
+def build_expectation_suite() -> ExpectationSuite:
+    """
+    Builder used to retrieve an instance of the validation expectation suite.
+    """
+
+    expectation_suite_energy_consumption = ExpectationSuite(
+        expectation_suite_name="energy_consumption_suite"
+    )
+
+    # Columns.
     expectation_suite_energy_consumption.add_expectation(
         ExpectationConfiguration(
-        expectation_type="expect_table_columns_to_match_ordered_list",
-        kwargs={
-            "column_list":["datetime_utc","area","consumer_type","energy_consumption"]
-        }
+            expectation_type="expect_table_columns_to_match_ordered_list",
+            kwargs={
+                "column_list": [
+                    "datetime_utc",
+                    "area",
+                    "consumer_type",
+                    "energy_consumption",
+                ]
+            },
+        )
+    )
+    
+    expectation_suite_energy_consumption.add_expectation(
+        ExpectationConfiguration(
+            expectation_type="expect_table_column_count_to_equal", kwargs={"value": 4}
         )
     )
 
+    # Datetime UTC
     expectation_suite_energy_consumption.add_expectation(
         ExpectationConfiguration(
-        expectation_type="expect_the_total_table_value_count",kwargs={"value":4}
+            expectation_type="expect_column_values_to_not_be_null",
+            kwargs={"column": "datetime_utc"},
         )
     )
 
-    #datetime utc
-    expectation_suite_energy_consumption.add_expectation(
-        ExpectationConfiguration(expectation_type="expect_datetime_utc_col_not_be_null",
-                                 kwargs={"column":"datetime_utc"})
-    )
-
+    # Area
     expectation_suite_energy_consumption.add_expectation(
         ExpectationConfiguration(
             expectation_type="expect_column_distinct_values_to_be_in_set",
             kwargs={"column": "area", "value_set": (1, 2)},
         )
     )
-
-
     expectation_suite_energy_consumption.add_expectation(
         ExpectationConfiguration(
             expectation_type="expect_column_values_to_be_of_type",
@@ -39,6 +53,7 @@ def build_great_expectation_suite():
         )
     )
 
+    # Consumer type
     expectation_suite_energy_consumption.add_expectation(
         ExpectationConfiguration(
             expectation_type="expect_column_distinct_values_to_be_in_set",
@@ -87,18 +102,10 @@ def build_great_expectation_suite():
             },
         )
     )
-
     expectation_suite_energy_consumption.add_expectation(
         ExpectationConfiguration(
             expectation_type="expect_column_values_to_be_of_type",
-            kwargs={"column": "consumer_type", "type_": "int64"},
-        )
-    )
-
-    expectation_suite_energy_consumption.add_expectation(
-        ExpectationConfiguration(
-            expectation_type="expect_total_unique_count_for_consumer_type",
-            kwargs={"column": "consumer_type", "count": (38)},
+            kwargs={"column": "consumer_type", "type_": "int32"},
         )
     )
 
@@ -113,17 +120,17 @@ def build_great_expectation_suite():
             },
         )
     )
-
     expectation_suite_energy_consumption.add_expectation(
         ExpectationConfiguration(
             expectation_type="expect_column_values_to_be_of_type",
             kwargs={"column": "energy_consumption", "type_": "float64"},
         )
     )
-
     expectation_suite_energy_consumption.add_expectation(
         ExpectationConfiguration(
             expectation_type="expect_column_values_to_not_be_null",
             kwargs={"column": "energy_consumption"},
         )
     )
+
+    return expectation_suite_energy_consumption
